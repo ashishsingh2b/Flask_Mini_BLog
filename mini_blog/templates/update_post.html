@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}Update Blog Post{% endblock %}
+{% block header %}Update Blog Post{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Update Your Blog Post</h2>
+    <form action="{{ url_for('update_post', post_id=post.id) }}" method="POST">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="{{ post.title }}" required class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" value="{{ post.author }}" readonly class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" rows="5" required class="form-control">{{ post.content }}</textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Update Blog Post</button>
+    </form>
+</div>
+
+<style>
+  body {
+    background-color: #f2f2f2; /* Light background for the entire page */
+    font-family: Arial, sans-serif; /* Font styling */
+  }
+
+  .container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-top: 50px; /* Space from the top */
+  }
+
+  h2 {
+    text-align: center; /* Centered heading */
+    color: #333; /* Darker text color */
+    margin-bottom: 20px; /* Space below the heading */
+  }
+
+  .form-group {
+    margin-bottom: 15px; /* Space between form groups */
+  }
+
+  label {
+    display: block; /* Block display for labels */
+    margin-bottom: 5px; /* Space below labels */
+    font-weight: bold; /* Bold labels */
+  }
+
+  .form-control {
+    width: 100%; /* Full width for inputs */
+    padding: 10px; /* Padding inside inputs */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in width */
+    transition: border-color 0.3s; /* Smooth border color transition */
+  }
+
+  .form-control:focus {
+    border-color: #007bff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+  }
+
+  .btn {
+    width: 100%; /* Full width for button */
+    padding: 10px; /* Padding for the button */
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition */
+    font-size: 16px; /* Font size for button */
+  }
+
+  .btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px; /* Reduced padding on smaller screens */
+    }
+
+    .btn {
+      font-size: 14px; /* Smaller font size for buttons on mobile */
+    }
+  }
+</style>
+
+{% endblock %}

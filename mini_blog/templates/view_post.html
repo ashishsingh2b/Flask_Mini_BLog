@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }}{% endblock title %}
+{% block header %}{{ post.title }}{% endblock header %}
+
+{% block content %}
+<div class="post-container">
+    <h1>{{ post.title }}</h1>
+    <p><strong>Author:</strong> {{ post.author }}</p>
+    <p><strong>Published on:</strong> {{ post.pub_date.strftime('%Y-%m-%d') }}</p>
+    {% if post.image_url %}
+        <img src="{{ post.image_url }}" alt="Post Image" class="img-fluid">
+    {% endif %}
+    <p>{{ post.content }}</p>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Home</a>
+</div>
+{% endblock content %}
